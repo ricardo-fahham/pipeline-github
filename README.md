@@ -22,9 +22,6 @@ flowchart TD
     F --> G[Deploy]
 ```
 
-Esse formato é suportado por plataformas como GitHub (em arquivos Markdown), GitLab, Azure DevOps, Obsidian e diversas ferramentas de documentação.
-
-
 Cada etapa só é executada se a anterior for concluída com sucesso (quando configurado dessa forma).
 
 ---
@@ -85,6 +82,18 @@ Estrutura:
 
 ---
 
+# Passo 4 – Nomear a pipeline
+
+No início do arquivo:
+
+```yaml
+name: Pipeline CI
+```
+
+Este será o nome mostrado na aba **Actions** do GitHub.
+
+--- 
+
 # Passo 4 – Definir quando a pipeline será executada
 
 Toda pipeline começa informando os eventos (*triggers*), ou seja, quais ações disparam sua execução.
@@ -102,7 +111,7 @@ on:
       - main
 
   schedule:
-    - cron: '0 2 * * *'
+    - cron: '0 10 * * *'
 ```
 
 Neste exemplo, a pipeline será executada:
@@ -132,19 +141,6 @@ Neste exemplo, a pipeline será executada:
 | `0 12 1 * *`   | Todo dia 1º de cada mês às 12:00 UTC |
 
 Dessa forma, além de executar a pipeline em resposta a eventos do repositório, é possível agendar execuções periódicas, o que é útil para tarefas como testes noturnos, verificações de segurança, geração de relatórios ou manutenção automatizada.
-
-
----
-
-# Passo 5 – Nomear a pipeline
-
-No início do arquivo:
-
-```yaml
-name: Pipeline CI
-```
-
-Este será o nome mostrado na aba **Actions** do GitHub.
 
 ---
 
@@ -441,6 +437,8 @@ flowchart TD
     E --> F[Package]
     F --> G[Upload do JAR]
 ```
+
+[Veja outros modelos na pasta projetos](./projetos/)
 
 ---
 
